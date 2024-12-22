@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator no eval (shunting yard algorithm)</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+        </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1 class="header-title">calc</h1>
+
+            <div class="theme-controls">
+              <h2 class="themes-title">Theme</h2> 
+
+               <form class="toggle-container"> 
+                <div class="toggle-labels">
+                    <label for="theme-one">1</label>
+                    <label for="theme-two">2</label>
+                    <label for="theme-three">3</label>
+                </div>
+
+                <div class="toggle"> 
+                    <input type="radio" tabindex="0" class="toggle-dot" name="theme" id='theme-one' aria-label='select theme one' />
+                    <input type="radio" tabindex="0" class="toggle-dot" name="theme" id='theme-two' aria-label='select theme two' />
+                    <input type="radio" tabindex="0" class="toggle-dot" name="theme" id='theme-three' aria-label='select theme three' />
+
+                </div>
+               </form>
+            </div>
+        </header>
+ 
+        <div class="calculator">
+            <input class="display" 
+            type="text"
+            name="display"
+            readOnly/>
+            
+
+          <div class="keyboard">
+            <button class='btn num'>7</button>
+            <button class='btn num'>8</button>
+            <button class='btn num'>9</button>
+            <button class='btn del'>del</button>
+            <button class='btn num'>4</button>
+            <button class='btn num'>5</button>
+            <button class='btn num'>6</button>
+            <button class='btn operator'>+</button>
+            <button class='btn num'>1</button>
+            <button class='btn num'>2</button>
+            <button class='btn num'>3</button>
+            <button class='btn operator'>-</button>
+            <button class='btn dot'>.</button>
+            <button class='btn num'>0</button>
+            <button class='btn operator'>/</button>
+            <button class='btn operator'>*</button>
+            <button class='btn reset'>reset</button>
+            <button class='btn equal'>=</button>
+          </div>
+        </div>
+    </main>
+    
+   <script src="./app.js"></script>
+
+</body>
+</html>

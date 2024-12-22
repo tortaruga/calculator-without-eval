@@ -1,0 +1,241 @@
+@use 'sass:math';
+
+:root, [data-theme="theme-one"] {
+    --mainBg: hsl(222, 26%, 31%);
+    --keypadBg: hsl(223, 31%, 20%);
+    --screenBg: hsl(224, 36%, 15%);
+    --accent: hsl(6, 63%, 50%);
+    --accentShadow:  hsl(6, 70%, 34%);
+    --accentTwo: hsl(225, 21%, 49%);
+    --accentTwoShadow: hsl(224, 28%, 35%);
+    --keyBg: hsl(30, 25%, 89%);
+    --keyShadow: hsl(28, 16%, 65%);
+    --textDark: hsl(221, 14%, 31%);
+    --textLight: hsl(0, 0%, 100%); 
+    --textEqual: hsl(0, 0%, 100%);
+    --textDisplay: hsl(0, 0%, 100%); 
+    --bodyText: hsl(0, 0%, 100%);
+}
+
+[data-theme="theme-two"] {
+    --mainBg: hsl(0, 0%, 90%);
+    --keypadBg: hsl(0, 5%, 81%); 
+    --screenBg: hsl(0, 0%, 93%);
+    --accentTwo: hsl(185, 42%, 37%);
+    --accentTwoShadow:  hsl(185, 58%, 25%);
+    --accent: hsl(25, 98%, 40%);
+    --accentShadow: hsl(25, 99%, 27%);
+    --keyBg: hsl(45, 7%, 89%);
+    --keyShadow: hsl(35, 11%, 61%);
+    --textDark: hsl(60, 10%, 19%);
+    --textLight: hsl(0, 0%, 100%); 
+    --textEqual: hsl(0, 0%, 100%);
+    --textDisplay: hsl(60, 10%, 19%);
+    --bodyText: hsl(60, 10%, 19%);
+}
+
+[data-theme='theme-three'] {
+    --mainBg: hsl(268, 75%, 9%);
+    --keypadBg: hsl(268, 71%, 12%);
+    --screenBg: hsl(268, 71%, 12%);
+    --accent: hsl(176, 100%, 44%);
+    --accentShadow:  hsl(177, 92%, 70%);
+    --accentTwo: hsl(281, 89%, 26%);
+    --accentTwoShadow: hsl(285, 91%, 52%);
+    --keyBg: hsl(268, 47%, 21%);
+    --keyShadow: hsl(290, 70%, 36%);
+    --textDark: hsl(52, 100%, 62%);
+    --textLight: hsl(0, 0%, 100%); 
+    --textEqual: hsl(198, 20%, 13%);
+    --textDisplay: hsl(52, 100%, 62%);
+    --bodyText: hsl(52, 100%, 62%);
+}
+
+@mixin flex($dir, $jus, $al) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jus;
+    align-items: $al;  
+}
+
+@function px-to-rem($px, $base: 16) {
+    @return math.div($px, $base) * 1rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'league spartan', sans-serif;
+    background-color: var(--mainBg);
+    color: var(--bodyText);
+    font-weight: 700; 
+}
+
+button, input {
+    font-family: inherit;
+}
+
+label {
+    cursor: pointer;
+} 
+
+main {
+    min-height: 100vh;
+    @include flex(column, center, stretch);
+    padding: 1rem; 
+    max-width: px-to-rem(600, );
+    margin: auto;
+}
+
+header {
+    padding-inline: 1rem;
+    @include flex(row, space-between, center);
+}
+
+.theme-controls {
+    @include flex(row, space-between, center);
+    gap: 1rem;
+    max-width: px-to-rem(150, );
+}
+
+.themes-title {
+    text-transform: uppercase;
+    font-size: px-to-rem(18, ); 
+    letter-spacing: .06rem;
+    position: relative;
+    top: .6rem;
+}
+
+.toggle-container {
+    width: 50%;  
+    max-width: px-to-rem(80, );
+    @include flex(column, center, stretch);
+    gap: .3rem;
+}
+
+.toggle-labels {
+    @include flex(row, space-between, center);
+    padding-inline: .3rem;
+    width: 100%; 
+}
+
+.toggle {
+    background: var(--keypadBg); 
+    width: 100%;
+    height: px-to-rem(30, );
+    border-radius: 1rem;
+    padding: .075rem;  
+    cursor: pointer;    
+    min-width: px-to-rem(60, );
+    @include flex(row, space-between, center)
+}
+
+.toggle-dot { 
+    appearance: none;
+    border-radius: 50%;
+    width: 33%; 
+    max-height: 95%;  
+    aspect-ratio: 1; 
+    cursor: pointer;  
+
+    &:checked {
+        background: var(--accent);
+        &:hover {
+           filter: brightness(130%);
+        }  
+    }
+}
+
+.display {
+    width: 100%; 
+    font-size: px-to-rem(45, );
+    padding: 1.5rem;
+    border-radius: .75rem;
+    border: none; 
+    background-color: var(--screenBg);
+    text-align: right;
+    font-weight:700;
+    color: var(--textDisplay);
+    margin-block: 1rem .5rem;
+}
+
+.display::placeholder { 
+    color: var(--textDisplay)
+}
+
+.keyboard {
+    margin-block: 1rem;
+    background-color: var(--keypadBg);
+    padding: 1rem;
+    border-radius: .75rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, max-content);
+    gap: 1rem;
+}
+
+.btn {
+    padding: 1rem .5rem;
+    font-size: px-to-rem(24, );
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: inherit;
+    color: var(--textDark);
+    box-shadow: 0 .20rem var(--keyShadow);
+    background-color: var(--keyBg);
+    aspect-ratio: 1;
+
+    &:hover {
+        filter: brightness(115%);
+    }
+
+}
+
+.reset, .equal {
+    grid-column: 2 span; 
+    aspect-ratio: unset; 
+} 
+
+.del, .reset, .equal {
+    color: var(--textLight);
+}
+
+.del, .reset {
+    background-color: var(--accentTwo);
+    text-transform: uppercase;
+    box-shadow: 0 .20rem var(--accentTwoShadow);
+    &:hover {
+        filter: brightness(115%);
+    }  
+}
+
+.equal {
+    background-color: var(--accent);
+    box-shadow: 0 .20rem var(--accentShadow);
+    color: var(--textEqual);
+    &:hover {
+        filter: brightness(115%);
+    } 
+}
+
+@media screen and (min-width: px-to-rem(450)) {
+    .btn {
+        aspect-ratio: unset;  
+        font-size: px-to-rem(32, );    
+    }
+    
+    .keyboard {
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: px-to-rem(350)) {
+    .keyboard {
+        gap: .5rem;
+    }
+} 
+

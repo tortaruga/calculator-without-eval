@@ -1,0 +1,246 @@
+:root, [data-theme=theme-one] {
+  --mainBg: hsl(222, 26%, 31%);
+  --keypadBg: hsl(223, 31%, 20%);
+  --screenBg: hsl(224, 36%, 15%);
+  --accent: hsl(6, 63%, 50%);
+  --accentShadow: hsl(6, 70%, 34%);
+  --accentTwo: hsl(225, 21%, 49%);
+  --accentTwoShadow: hsl(224, 28%, 35%);
+  --keyBg: hsl(30, 25%, 89%);
+  --keyShadow: hsl(28, 16%, 65%);
+  --textDark: hsl(221, 14%, 31%);
+  --textLight: hsl(0, 0%, 100%);
+  --textEqual: hsl(0, 0%, 100%);
+  --textDisplay: hsl(0, 0%, 100%);
+  --bodyText: hsl(0, 0%, 100%);
+}
+
+[data-theme=theme-two] {
+  --mainBg: hsl(0, 0%, 90%);
+  --keypadBg: hsl(0, 5%, 81%);
+  --screenBg: hsl(0, 0%, 93%);
+  --accentTwo: hsl(185, 42%, 37%);
+  --accentTwoShadow: hsl(185, 58%, 25%);
+  --accent: hsl(25, 98%, 40%);
+  --accentShadow: hsl(25, 99%, 27%);
+  --keyBg: hsl(45, 7%, 89%);
+  --keyShadow: hsl(35, 11%, 61%);
+  --textDark: hsl(60, 10%, 19%);
+  --textLight: hsl(0, 0%, 100%);
+  --textEqual: hsl(0, 0%, 100%);
+  --textDisplay: hsl(60, 10%, 19%);
+  --bodyText: hsl(60, 10%, 19%);
+}
+
+[data-theme=theme-three] {
+  --mainBg: hsl(268, 75%, 9%);
+  --keypadBg: hsl(268, 71%, 12%);
+  --screenBg: hsl(268, 71%, 12%);
+  --accent: hsl(176, 100%, 44%);
+  --accentShadow: hsl(177, 92%, 70%);
+  --accentTwo: hsl(281, 89%, 26%);
+  --accentTwoShadow: hsl(285, 91%, 52%);
+  --keyBg: hsl(268, 47%, 21%);
+  --keyShadow: hsl(290, 70%, 36%);
+  --textDark: hsl(52, 100%, 62%);
+  --textLight: hsl(0, 0%, 100%);
+  --textEqual: hsl(198, 20%, 13%);
+  --textDisplay: hsl(52, 100%, 62%);
+  --bodyText: hsl(52, 100%, 62%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "league spartan", sans-serif;
+  background-color: var(--mainBg);
+  color: var(--bodyText);
+  font-weight: 700;
+}
+
+button, input {
+  font-family: inherit;
+}
+
+label {
+  cursor: pointer;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1rem;
+  max-width: 37.5rem;
+  margin: auto;
+}
+
+header {
+  padding-inline: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: 9.375rem;
+}
+
+.themes-title {
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 0.06rem;
+  position: relative;
+  top: 0.6rem;
+}
+
+.toggle-container {
+  width: 50%;
+  max-width: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.3rem;
+}
+
+.toggle-labels {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 0.3rem;
+  width: 100%;
+}
+
+.toggle {
+  background: var(--keypadBg);
+  width: 100%;
+  height: 1.875rem;
+  border-radius: 1rem;
+  padding: 0.075rem;
+  cursor: pointer;
+  min-width: 3.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-dot {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 50%;
+  width: 33%;
+  max-height: 95%;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+.toggle-dot:checked {
+  background: var(--accent);
+}
+.toggle-dot:checked:hover {
+  filter: brightness(130%);
+}
+
+.display {
+  width: 100%;
+  font-size: 2.8125rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  background-color: var(--screenBg);
+  text-align: right;
+  font-weight: 700;
+  color: var(--textDisplay);
+  margin-block: 1rem 0.5rem;
+}
+
+.display::-moz-placeholder {
+  color: var(--textDisplay);
+}
+
+.display::placeholder {
+  color: var(--textDisplay);
+}
+
+.keyboard {
+  margin-block: 1rem;
+  background-color: var(--keypadBg);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, max-content);
+  gap: 1rem;
+}
+
+.btn {
+  padding: 1rem 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: inherit;
+  color: var(--textDark);
+  box-shadow: 0 0.2rem var(--keyShadow);
+  background-color: var(--keyBg);
+  aspect-ratio: 1;
+}
+.btn:hover {
+  filter: brightness(115%);
+}
+
+.reset, .equal {
+  grid-column: 2 span;
+  aspect-ratio: unset;
+}
+
+.del, .reset, .equal {
+  color: var(--textLight);
+}
+
+.del, .reset {
+  background-color: var(--accentTwo);
+  text-transform: uppercase;
+  box-shadow: 0 0.2rem var(--accentTwoShadow);
+}
+.del:hover, .reset:hover {
+  filter: brightness(115%);
+}
+
+.equal {
+  background-color: var(--accent);
+  box-shadow: 0 0.2rem var(--accentShadow);
+  color: var(--textEqual);
+}
+.equal:hover {
+  filter: brightness(115%);
+}
+
+@media screen and (min-width: 28.125rem) {
+  .btn {
+    aspect-ratio: unset;
+    font-size: 2rem;
+  }
+  .keyboard {
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 21.875rem) {
+  .keyboard {
+    gap: 0.5rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
