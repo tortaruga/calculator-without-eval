@@ -40,7 +40,9 @@
             <input class="display" 
             type="text"
             name="display"
-            readOnly/>
+            oninput="this.value = this.value.replace(/[^0-9+\-*/]/g, '')"
+
+            />
             
 
           <div class="keyboard">

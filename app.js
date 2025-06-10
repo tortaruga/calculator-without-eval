@@ -63,6 +63,15 @@ btns.forEach(btn => {
     })
 })
 
+addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const display = document.querySelector('.display');
+        calculate(display.value) == 'Infinity' || isNaN(calculate(display.value)) ? 
+        display.value = 'Error' :
+        display.value = calculate(display.value);
+    }
+})
+
 function calculate(expression) {
     // convert expression to postfix notation
     const postfix = infixToPostfix(expression);
@@ -83,7 +92,7 @@ function infixToPostfix(expression) {
     const operators = [];
     const output = [];
     // divide expression in numbers and operators
-    const tokens = expression.match(/\d+(\.\d+)?|\+|\-|\*|\/|/g);
+    const tokens = expression.match(/\d+(\.\d+)?|\+|\-|\*|\//g);
     
     tokens.forEach(token => {
         // if token is a number push it to output
